@@ -1,5 +1,5 @@
 conky.config = {
-    alignment = 'ml',
+    alignment = 'mr',
     border_width = 1,
     border_inner_margin = 15,
     border_outer_margin = 15,
@@ -7,20 +7,18 @@ conky.config = {
     minimum_width = 400,
     maximum_width = 1000,
     minimum_height = 5,
-    default_color = 'grey',
-    color1a = 'C574DD',
-    color2a = '79E6F3',
-    color1 = '19A094',
-    color2 = 'FF5252',
+    default_colour = 'FDFDFD',
+    color2 = 'FF4971',
+    color1 = '18E3C8',
     cpu_avg_samples = 2,
-    default_outline_color = 'grey',
-    default_shade_color = 'grey',
+    default_outline_colour = 'FDFDFD',
+    default_shade_colour = 'FDFDFD',
     double_buffer = true,    
     draw_borders = false,
     draw_outline = false,
     draw_shades = false,
     use_xft = true,
-    font = 'Inconsolata:size=10',
+    font = 'Anka/Coder:size=8',
     gap_x = 50,
     gap_y = 0,
     
@@ -33,10 +31,10 @@ conky.config = {
     own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
     own_window_class = 'Conky',
     own_window_type = 'desktop',
-    own_window_color = 'FFFFFF',
+    own_window_colour = '1D1F28',
     own_window_transparent = false,
     own_window_argb_visual = true,
-    own_window_argb_value = 50,
+    own_window_argb_value = 180,
     stippled_borders = 0,
     update_interval = 1.0,
     uppercase = none,
@@ -48,14 +46,14 @@ conky.config = {
 
 conky.text = [[
 # SYSTEM
-$color1${font inconsolata:weight=Bold}SYSTEM$color $hr$font
+$color1${font Anka/Coder:weight=Bold}SYSTEM$color $hr$font
 $color2 Host:   $color$nodename
 $color2 OS:     $color${execi 999999 lsb_release -ds}
 $color2 Kernel: $color$kernel
 $color2 Uptime: $color$uptime
 
 # PROCESSOR
-$color1${font inconsolata:weight=Bold}PROCESSOR$color $hr$font
+$color1${font Anka/Coder:weight=Bold}PROCESSOR$color $hr$font
 $color2 Usage: $color${cpu cpu0}%\
 ${alignr 0}${color2}Temperature: $color${acpitemp}°C
  $color${cpugraph cpu0 50,480}
@@ -65,7 +63,7 @@ $color2 CPU3: $color${cpu cpu3}%${goto 180}${cpubar cpu3 16,344}
 $color2 CPU4: $color${cpu cpu4}%${goto 180}${cpubar cpu4 16,344}
 
 # MEMORY
-$color1${font inconsolata:weight=Bold}MEMORY$color $hr$font
+$color1${font Anka/Coder:weight=Bold}MEMORY$color $hr$font
 $color2 Usage: $color$memperc%
 $color ${memgraph 50,480}
 ${alignr 0}$color$mem/$memmax
@@ -74,7 +72,7 @@ ${alignr 0}$swap/$swapmax
 $color2 Swap: $color$swapperc%${goto 180}${swapbar 16,344}
 
 # NETWORK
-$color1${font inconsolata:weight=Bold}NETWORK$color $hr$font
+$color1${font Anka/Coder:weight=Bold}NETWORK$color $hr$font
 ${if_existing /sys/class/net/enp0s31f6/operstate up}\
 $color2 Interface: ${color}enp0s31f6)
 $color2 Ext. IP: $color${execi 60 curl  ipinfo.io/ip}
@@ -92,19 +90,20 @@ $color ${downspeedf wlp4s0}KiB/s - ${totaldown wlp4s0}\
 ${goto 286}$color${upspeedf wlp4s0}KiB/s - ${totalup wlp4s0}
 $else\
 $color2 Disconnected\
+
 $endif$endif\
 
 # FILE SYSTEM
-$color1${font inconsolata:weight=Bold}FILE SYSTEM$color $hr$font
-${color2}/$color     ${fs_used /}/${fs_size /}${color}\
- - ${fs_used_perc /}% ${fs_bar 16,128 /}
-${color2}/home${color grey}\
+$color1${font Anka/Coder:weight=Bold}FILE SYSTEM$color $hr$font
+ ${color2}/$color     ${fs_used /}/${fs_size /}${color}\
+ - ${fs_used_perc /}% ${fs_bar 16,118 /}
+ ${color2}/home$color\
  ${fs_used /home}/${fs_size /home}${color}\
- - ${color grey}$color${fs_used_perc /home}% ${fs_bar 16,128 /home}
+ - ${color grey}$color${fs_used_perc /home}% ${fs_bar 16,118 /home}
 
 # PROCESSES
-$color1${font inconsolata:weight=Bold}PROCESSES$color $hr$font
-Total:$processes  Running:$running_processes
+$color1${font Anka/Coder:weight=Bold}PROCESSES$color $hr$font
+ ${color2}Total: $color$processes  ${color2}${alignr 0}Running: $color$running_processes
 ${color2} Name               PID   CPU%   MEM%
 ${color} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
 ${color} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
